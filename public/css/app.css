@@ -1,0 +1,103 @@
+@font-face {
+    font-family: "Pacifico";
+    src: local("Pacifico"),
+    url("fonts/Pacifico-Regular.ttf") format("truetype")
+}
+body {
+    background: #212529;
+    color: white;
+}
+h1 {
+    color: white;
+    font-family: 'Pacifico', sans-serif;
+    display: block;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.navbar-brand {
+    margin: 0 20px;
+}
+#logo {
+    max-height: 35px;
+}
+.suggestion {
+    cursor: pointer;
+    padding: 1px 10px;
+}
+#suggestions {
+    background: #222;
+    padding: 5px;
+    position: absolute;
+    width: auto;
+    z-index: 99;
+}
+.suggestion:hover {
+    background: #2c5710;
+}
+#get-location {
+    margin: 0 0 30px 0;
+}
+#get-location label {
+    margin-left: 10px;
+}
+#location {
+    border: 3px solid #000;
+    background: #46780e;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+#hottest-day,
+#coldest-day {
+    padding: 20px;
+}
+#hottest-day > div,
+#coldest-day > div {
+    position: relative;
+    padding: 0 1em;
+    color: white;
+    height: 300px;
+    border: 3px solid #000;
+    border-radius: 10px;
+    background-color: #444;
+    background-repeat: no-repeat;
+    background-size: 80px;
+}
+#hottest-day > div {
+    background-image: url('./images/hot_temperature.png');
+    background-position: 20px 20px;
+}
+#coldest-day > div {
+    background-image: url('./images/cold_temperature.png');
+    background-position: calc(100% - 20px) 20px;
+}
+#hottest-day .temperature,
+#coldest-day .temperature {
+    position: absolute;
+    font-size: 2rem;
+    top: 20px;
+}
+#hottest-day .date,
+#coldest-day .date {
+    position: absolute;
+    font-size: 20px;
+    top: 120px;
+}
+#hottest-day .temperature {
+    left: 100px;
+}
+#coldest-day .date,
+#hottest-day .date {
+    left: 15px;
+}
+#coldtest-day .temperature {
+    right: 100px;
+}
+#coldest-day .text,
+#hottest-day .text {
+    position: absolute;
+    top: 180px;
+    width: calc(100% - 30px);
+}
