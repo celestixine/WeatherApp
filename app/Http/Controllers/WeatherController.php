@@ -27,7 +27,7 @@ class WeatherController
     }
 
     public function outputLocations($name) {
-        $url        = 'https://geocoding-api.open-meteo.com/v1/search?name=' . $name . '&language=de&format=json';
+        $url        = 'https://geocoding-api.open-meteo.com/v1/search?name=' . urlencode($name) . '&language=de&format=json';
         $json       = $this->getCurlResponse($url);
         self::setHeader();
         echo $json;
@@ -35,7 +35,12 @@ class WeatherController
 
     public function outputWeatherData(float $lat, float $long)
     {
-        $url = 'https://archive-api.open-meteo.com/v1/archive?latitude=' . $lat . '&longitude=' . $long . '&start_date=2023-07-13&end_date=2024-07-12&hourly=temperature_2m';
+        $DateTime = new \DateTime();
+        $DateTime->add(\DateInterval::createFromDateString('-2 day'));
+        $to = $DateTime->format('Y-m-d');
+        $DateTime->add(\DateInterval::createFromDateString('-1 year'));
+        $from = $DateTime->format('Y-m-d');
+        $url = 'https://archive-api.open-meteo.com/v1/archive?latitude=' . $lat . '&longitude=' . $long . '&start_date=' . $from . '&end_date=' . $to . '&hourly=temperature_2m';
         $json       = $this->getCurlResponse($url);
         $hottestDay = $this->getHottestOrColdestDay($json,true);
         $coldestDay = $this->getHottestOrColdestDay($json,false);
