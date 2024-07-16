@@ -52,6 +52,7 @@ class WeatherController
         $jsonArray  = json_decode($json, true);
         $minMax     = [];
         foreach ($jsonArray['hourly']['temperature_2m'] as $k => $data) {
+            if ( $data===null ) continue;
             if ( count($minMax)>0 ) {
                 if ($hot && (float)$data <= $minMax['temperature']) {
                     continue;
